@@ -9,11 +9,13 @@
 
 int main(){
 	Window::create("my gui", 500, 500);
-	Window::color(sf::Color(100, 220, 100));
+	Window::color(sf::Color(120, 120, 120));
 
-	Label *label = new Label("My Label");
+	Label *label = new Label("My label", 30);
+	label->FocusColor(sf::Color(50, 255, 50));
 
-	Window::AttachObject(label);
+
+	Window::push_object(label);
 
 
 	Window::run();
