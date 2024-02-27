@@ -14,6 +14,7 @@
 sf::RenderWindow Window::window;
 std::vector<Object*> Window::_obj;
 sf::Color Window::clearColor(0, 0, 0);
+sf::Vector2i Window::mouse;
 
 
 // create window method
@@ -26,8 +27,8 @@ void Window::create(const char* caption, int width, int height, int style){
 void Window::run() {
     while(Window::window.isOpen()) {
         Window::events();
-        Window::update();
         Window::draw();
+        Window::update();
     }
     Window::quit();
 }
@@ -42,6 +43,7 @@ void Window::color(sf::Color d_color) {
 // quit
 void Window::quit() {
     // free pointer and close main window
+    Window::_obj.clear();
 
     Window::window.close();
 }
@@ -78,6 +80,9 @@ void Window::events() {
 
 // update
 void Window::update() {
+    // get mouse position
+    mouse = sf::Mouse::getPosition();
+
     std::for_each(
         Window::_obj.begin(),
         Window::_obj.end(),
@@ -93,10 +98,9 @@ void Window::draw() {
     std::for_each(
         Window::_obj.begin(),
         Window::_obj.end(),
-        [](Object* o){ o->draw(); }
+        [](Object* o){ o->draw(Window::window); }
     );
 
     Window::window.display();
 }
-
 

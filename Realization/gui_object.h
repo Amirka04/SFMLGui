@@ -11,11 +11,10 @@
 
 class Object{
     public:
-        virtual void draw() = 0;
+        virtual void draw(sf::RenderWindow&) = 0;
         virtual void update() = 0;
         virtual void event(sf::Event event) = 0;
-
-        virtual ~Object() = 0;
+        virtual ~Object(){}
 };
 
 

@@ -5,6 +5,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include <iostream>
 
 #include <SFML/Graphics.hpp>
 #include "../gui_object.h"
@@ -20,13 +21,16 @@ public:
 
         static void AttachObject(Object*);
         static void DettachObject(Object*);
-
 private:
         // static method
         static void events();
         static void update();
         static void draw();
 
+public:
+        static sf::Vector2i mouse;
+
+private:
         // static values
         static sf::RenderWindow window;
         static sf::Color clearColor;
