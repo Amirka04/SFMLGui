@@ -19,8 +19,8 @@ public:
         static void color(sf::Color);
         static void quit();
 
-        static void AttachObject(Object*);
-        static void DettachObject(Object*);
+        static void push_object(Object*);
+        static void erase_object(Object*);
 private:
         // static method
         static void events();

@@ -50,14 +50,14 @@ void Window::quit() {
 
 
 // добавление объекта для его рендера, событии и каких либо других действий по мере работы программы
-void Window::AttachObject(Object* o) {
+void Window::push_object(Object* o) {
     Window::_obj.push_back(o);
 }
 
 
 // удаление объекта из общего списка объектов в будущем планируется сделать именно этот метод автоматизированным или же полуавтоматизированным
 // то есть что бы удаление из списка происходило либо через деструктор либо руками человека, но думаю лучше сделать через деструктор
-void Window::DettachObject(Object* o) {
+void Window::erase_object(Object* o) {
     Window::_obj.erase( std::remove(Window::_obj.begin(), Window::_obj.end(), o), Window::_obj.end() );
 }
 
@@ -81,7 +81,8 @@ void Window::events() {
 // update
 void Window::update() {
     // get mouse position
-    mouse = sf::Mouse::getPosition();
+    mouse = sf::Mouse::getPosition(Window::window);
+
 
     std::for_each(
         Window::_obj.begin(),
