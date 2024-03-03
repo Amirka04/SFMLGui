@@ -6,13 +6,11 @@
 
 #include <iostream>
 #include <algorithm>
-#include <vector>
-
 
 
 // static vars
 sf::RenderWindow Window::window;
-std::vector<Object*> Window::_obj;
+std::list<Object*> Window::_obj;
 sf::Color Window::clearColor(0, 0, 0);
 sf::Vector2i Window::mouse;
 

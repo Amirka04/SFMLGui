@@ -6,6 +6,7 @@
 #define WINDOW_H
 
 #include <iostream>
+#include <list>
 
 #include <SFML/Graphics.hpp>
 #include "../gui_object.h"
@@ -34,7 +35,7 @@ private:
         // static values
         static sf::RenderWindow window;
         static sf::Color clearColor;
-        static std::vector<Object*> _obj;
+        static std::list<Object*> _obj;
 
 };
 
