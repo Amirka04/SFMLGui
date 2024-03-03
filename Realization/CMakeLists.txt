@@ -5,6 +5,7 @@ project(GUI)
 
 add_subdirectory(Window)
 add_subdirectory(Label)
+add_subdirectory(Button)
 
 
 add_executable(GUI main.cpp)
@@ -14,3 +15,7 @@ target_link_libraries(GUI Window)
 
 # link lib Label
 target_link_libraries(GUI Label)
+
+
+# link lib button
+target_link_libraries(GUI Button)
