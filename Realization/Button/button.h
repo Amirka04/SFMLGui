@@ -5,10 +5,11 @@
 #define BUTTON_H
 
 #include <iostream>
+#include "../gui_object.h"
 #include <SFML/Graphics.hpp>
 
 
-class Button : public sf::RectangleShape
+class Button : public sf::RectangleShape, public Object
 {
 public:
     Button();
@@ -16,7 +17,7 @@ public:
 
     ~Button();
 protected:
-
+    sf::String string = "Побороть лень!";
 };
 
 #endif // BUTTON_H
