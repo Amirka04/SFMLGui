@@ -12,7 +12,6 @@ int main(){
 	Window::color(sf::Color(120, 120, 120));
 
 	Label *label = new Label("My label", 30);
-	label->FocusColor(sf::Color(50, 255, 50));
 
 
 	Window::push_object(label);
