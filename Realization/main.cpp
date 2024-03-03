@@ -19,5 +19,5 @@ int main(){
 
 	Window::run();
 
-	return 1;
+	return EXIT_SUCCESS;
 }
