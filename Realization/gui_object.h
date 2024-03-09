@@ -11,9 +11,9 @@
 
 class Object{
     public:
-        virtual void draw(sf::RenderWindow&) = 0;
-        virtual void update() = 0;
-        virtual void event(sf::Event event) = 0;
+        virtual void draw(sf::RenderWindow&){};
+        virtual void update(){};
+        virtual void event(sf::Event e){};
         virtual ~Object() = default;
 };
 
