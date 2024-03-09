@@ -5,19 +5,43 @@
 #define BUTTON_H
 
 #include <iostream>
-#include "../gui_object.h"
 #include <SFML/Graphics.hpp>
+
+#include "../gui_object.h"
+#include "label.h"
+
 
 
 class Button : public sf::RectangleShape, public Object
 {
 public:
+    // constructor
     Button();
-    Button(const sf::String& labelText, const sf::Vector2f& size);
+    Button(const sf::String& labelText, float border = 10);
 
-    ~Button();
+    // settters
+    void set_text(const sf::String& text);
+    void set_size_text(sf::Uint8 font_size);
+    void set_size(const sf::Vector2f& size);
+    void set_pos(const sf::Vector2f& new_pos);
+    void set_focus_color(const sf::Color& color);
+    void set_color(const sf::Color& color);
+
+    bool isClicked();
+
+    void update() override;
+    void draw(sf::RenderWindow& window) override;
+    void event(sf::Event e) override;
+
+    // destructor
+    ~Button() = default;
 protected:
-    sf::String string = "Побороть лень!";
+    sf::Color focusColor;
+    sf::Color color;
+    sf::Color defColor;
+    float border;
+    bool focusFlag;
+    Label label;
 };
 
 #endif // BUTTON_H
