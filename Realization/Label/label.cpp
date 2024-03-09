@@ -14,29 +14,39 @@ Label::Label(const sf::String &msg, sf::Uint16 font_size, const sf::String &font
 }
 
 
-bool Label::isFocus() {
-    if( Window::mouse.x >= getPosition().x && Window::mouse.y >= getPosition().y \
-        && Window::mouse.x <= getPosition().x + getGlobalBounds().width && Window::mouse.y <= getPosition().y + getGlobalBounds().height)
-        return true;
-    return false;
+void Label::set_color(const sf::Color &color) {
+    def_color = this->drawColor = color;
 }
+
+
+
+void Label::setFocus(bool flag) {
+    focusFlag = flag;
+}
+
 
 void Label::FocusColor(const sf::Color &color) {
     focus_color = color;
 }
 
 
-
 void Label::update() {
     drawColor = def_color;
-    if(isFocus() and focus_color != def_color)
+    if(focusFlag /*and focus_color != def_color*/)
         drawColor = focus_color;
 
     setFillColor(drawColor);
 }
 
 
-void Label::event(sf::Event) {}
+void Label::event(sf::Event e) {
+    if(e.type == sf::Event::MouseMoved)
+        if( e.mouseMove.x >= getPosition().x && e.mouseMove.y >= getPosition().y \
+             && e.mouseMove.x <= getPosition().x + getGlobalBounds().width && e.mouseMove.y <= getPosition().y + getGlobalBounds().height)
+            focusFlag = true;
+        else
+            focusFlag = false;
+}
 
 
 void Label::draw(sf::RenderWindow& display) {
